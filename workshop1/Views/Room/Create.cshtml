@@ -1,0 +1,62 @@
+﻿@using workshop1.ViewModels
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Add furnitures</title>
+    <style>
+        table, td, th {
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 75%;
+            margin: auto,auto;
+            padding: 0,16px;
+        }
+
+        th, td {
+            padding: 15px;
+        }
+        tbody {
+            border: 3px solid black;
+        }
+
+    </style>
+</head>
+<body>
+    <form method="post" action="/Room/AddFurniture">
+        <label>Your furnitures name:</label>
+        <br />
+        <input type="text" min="1" max="255" name="name" />
+        <br />
+        <label>Your furnitures width:</label>
+        <br />
+        <input type="number" min="1" max="100" name="width" />
+        <br />
+
+        <label>Your furnitures height</label>
+        <br />
+        <input type="number" min="1" max="100" name="height" />
+        <br />
+
+        <input type="submit" value="Create Furniture" />
+    </form>
+    <table>
+        <tbody>
+            @for (int i = 0; i < Model.Matrix.GetLength(0); i++)
+            {
+                @:<tr>
+                    @for (int j = 0; j < Model.Matrix.GetLength(1); j++)
+                    {
+                        @:<td>
+                            @Model.Matrix[i, j]
+                    @:</td>
+                }
+                @:</tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
